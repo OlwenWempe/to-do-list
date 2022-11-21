@@ -91,8 +91,6 @@ class User
         return $count_user > 0 ? true : false;
     }
 
-
-
     public static function findOneByEmail(string $email)
     {
         $cnx = new Connexion();

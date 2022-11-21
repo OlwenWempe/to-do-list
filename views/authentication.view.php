@@ -1,5 +1,5 @@
 <?php
-require_once './views/_partials/header.view.php';
+require_once './views/partials/header.view.php';
 ?>
 
 <h2 class="chalk text-center mb-5">Bonjour <?= $first_name ?></h2>

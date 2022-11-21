@@ -1,6 +1,6 @@
 <?php
 
-require_once './views/_partials/header.view.php';
+require_once './views/partials/header.view.php';
 ?>
 
 
@@ -19,5 +19,5 @@ require_once './views/_partials/header.view.php';
 </section>
 
 <?php
-require_once './views/_partials/footer.view.php';
+require_once './views/partials/footer.view.php';
 ?>

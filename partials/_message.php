@@ -13,7 +13,7 @@
 <?php if (isset($_SESSION['success'])) : ?>
 <?php foreach ($_SESSION['success'] as $success) : ?>
 
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-success" role="alert">
     <?= $success ?>
 </div>
 
