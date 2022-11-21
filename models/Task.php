@@ -62,4 +62,18 @@ class Task
     {
         $this->id_user = $id_user;
     }
+
+    public function insert()
+    {
+        $cnx = new Connexion();
+        $pdo = $cnx->getPdo();
+
+        $stmt = $pdo->prepare("INSERT INTO user (`name`, first_name, email, password) VALUES (:last_name, :first_name, :email, :password)");
+        $stmt->execute([
+            'last_name' => $this->last_name,
+            'first_name' => $this->first_name,
+            'email' => $this->email,
+            'password' => $this->password
+        ]);
+    }
 }
