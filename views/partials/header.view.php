@@ -29,15 +29,4 @@
     <main id="main" class="pt-5">
         <section class="container">
             <h1 class="chalk text-center mb-3"><?= $title ?></h1>
-            <?php if (isset($_SESSION['error'])) : ?>
-            <div class="alert alert-danger">
-                <?= $_SESSION['error']; ?>
-            </div>
-            <?php unset($_SESSION['error']);
-            endif; ?>
-            <?php if (isset($_SESSION['success'])) : ?>
-            <div class="alert alert-success">
-                <?= $_SESSION['success']; ?>
-            </div>
-            <?php unset($_SESSION['success']);
-            endif; ?>
+            <?php require_once "partials/_message.php" ?>
