@@ -43,10 +43,12 @@ if (isset($_POST['submit'])) {
         if (empty($_SESSION['errors'])) {
 
             try {
-                echo "hallo";
                 $user->insert();
-                $_SESSION['first_name'] = $_POST['first_name'];
-                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['user'] = [
+                    'first_name' => $user->getFirst_name(),
+                    'email' => $user->getEmail(),
+                ];
+
                 $_SESSION['success'][] = "Vous vous êtes bien enregistré";
                 header('Location: login.php');
                 exit;
