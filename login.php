@@ -20,23 +20,6 @@ if (isset($_SESSION['user'])) {
             // vérifier si les champs sont remplis
             if (empty($_POST['email'])) {
                 $_SESSION['error'][] = 'Veuillez rentrer votre adresse mail.';
-
-
-
-                // try {
-                //     $stmt = $pdo->prepare("SELECT `email`, `first_name` FROM user WHERE email = :email");
-                //     $stmt->execute(['email' => $_POST['email']]);
-                //     $id = $stmt->fetch();
-                //     if ($id->email == $_POST['email']) {
-                //         $_SESSION['first_name'] = $id->first_name;
-                //         $_SESSION['email'] = $id->email;
-                //         header('Location: authentication.php');
-                //     } else {
-                //         $_SESSION['error'] = "Cet email n'est pas enregistré dans notre base.";
-                //     }
-                // } catch (PDOException $th) {
-                //     echo $th->getMessage();
-                // }
             } else {
                 // Récupérer les données du formulaire
                 $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
