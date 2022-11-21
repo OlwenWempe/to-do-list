@@ -47,7 +47,7 @@ require_once './views/partials/header.view.php';
         </div>
     </div>
     <div class="pb-5 row form-group">
-        <button id="register-submit" type="submit" class="col-2 mx-auto btn btn-primary">Valider</button>
+        <button id="register-submit" name="submit" type="submit" class="col-2 mx-auto btn btn-primary">Valider</button>
     </div>
 </form>
 </section>

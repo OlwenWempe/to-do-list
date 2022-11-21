@@ -5,6 +5,8 @@ class User
 {
 
     private int $id;
+    private string $last_name;
+    private string $first_name;
     private string $email;
     private string $password;
 
@@ -12,6 +14,26 @@ class User
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getLast_name(): string
+    {
+        return $this->last_name;
+    }
+
+    public function setLast_name(string $last_name): void
+    {
+        $this->last_name = $last_name;
+    }
+
+    public function getFirst_name(): string
+    {
+        return $this->first_name;
+    }
+
+    public function setFirst_name(string $first_name): void
+    {
+        $this->first_name = $first_name;
     }
 
     public function getEmail(): string
@@ -37,7 +59,7 @@ class User
         if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password)) {
             throw new Exception("Le mot de passe doit contenir au moins 8 caractères dont une minuscule, une majuscule, un chiffre et un caractère spécial");
         }
-        $this->password = password_hash($password, PASSWORD_ARGON2ID);
+        $this->password = password_hash($password, PASSWORD_BCRYPT);
     }
 
     public function insert()
@@ -45,7 +67,7 @@ class User
         $cnx = new Connexion();
         $pdo = $cnx->getPdo();
 
-        $stmt = $pdo->prepare("INSERT INTO user (`last_name`, `first_name`, `email`, `password`) VALUES (:last_name, :first_name , :email, :password)");
+        $stmt = $pdo->prepare("INSERT INTO user (last_name, first_name, email, password) VALUES (:last_name, :first_name, :email, :password)");
         $stmt->execute([
             'last_name' => $this->last_name,
             'first_name' => $this->first_name,
