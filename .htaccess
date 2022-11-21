@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# disable access to config folder and files 
+RewriteRule ^config/ - [F]
+RewriteRule ^partials/ - [F]
+RewriteRule ^views/ - [F]
+RewriteRule ^models/ - [F]

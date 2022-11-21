@@ -1,0 +1,87 @@
+:root {
+    --BgLime: #c4cda1;
+    --darkBlue: #00767f;
+    --darkerBlue: #005b62;
+    --lightBlue: #bffcfb;
+    --grayBlue: #609b9a ; 
+    --light: #eee ; 
+}
+@font-face {
+    font-family: "Chalk";
+    src: url(./fonts/SixHandsWebChalk.ttf);
+}
+
+.chalk{
+font-family: 'Chalk', Verdana, Geneva, Tahoma, sans-serif ;
+
+}
+#main{
+    background-color: var(--BgLime) !important;
+    min-height: 80vh !important;
+}
+#index-main{
+    font-family: 'Chalk', Verdana, Geneva, Tahoma, sans-serif ; 
+    background-color: var(--BgLime) !important;
+
+}
+nav{
+    background-color: var(--BgLime);
+    border-bottom: 1px black;
+}
+#nav-logo {
+    height: 5vw;
+}
+.nav-h2{
+    font-weight: 1000;
+    font-size: 3vw;
+}
+
+form{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif !important;
+}
+#task-card{
+    width: 30vw;
+}
+#task-card > img{
+    width: auto;
+    background-color: var(--darkBlue);
+}
+#task-card{
+    background-color: var(--lightBlue);
+}
+.form-label{
+    font-size: 1.5rem;
+}
+.btnPos{
+    background-color: var(--darkBlue);
+    color: var(--lightBlue);
+    
+}
+.btnPos:hover {
+    background-color: var(--darkerBlue);
+    color: var(--lightBlue);
+}
+.btnMod{
+    background-color: var(--grayBlue);
+    color: var(--darkerBlue);
+}
+.btnMod:hover {
+    background-color: var(--darkBlue);
+    color: var(--lightBlue);
+}
+.table-done{
+    width: 60vw;
+}
+#h2-index{
+    color: var(--lightBlue);
+}
+#h2-div{
+    background-color: var(--darkBlue);
+
+}
+.text-decoration-none{
+    color: var(--darkerBlue);
+}
+.index-li{
+    background-color: var(--grayBlue);
+}
