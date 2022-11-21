@@ -40,24 +40,16 @@ class User
         $this->password = password_hash($password, PASSWORD_ARGON2ID);
     }
 
-    public function insertEmail()
+    public function insert()
     {
         $cnx = new Connexion();
         $pdo = $cnx->getPdo();
 
-        $stmt = $pdo->prepare("INSERT INTO user (`email`) VALUES (:email)");
+        $stmt = $pdo->prepare("INSERT INTO user (`last_name`, `first_name`, `email`, `password`) VALUES (:last_name, :first_name , :email, :password)");
         $stmt->execute([
+            'last_name' => $this->last_name,
+            'first_name' => $this->first_name,
             'email' => $this->email,
-        ]);
-    }
-
-    public function insertPassword()
-    {
-        $cnx = new Connexion();
-        $pdo = $cnx->getPdo();
-
-        $stmt = $pdo->prepare("INSERT INTO user (`password`) VALUES (:password)");
-        $stmt->execute([
             'password' => $this->password
         ]);
     }

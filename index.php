@@ -12,5 +12,5 @@ if (isset($_SESSION['authenticated'])) {
     header('Location: to-do.php');
 } else {
     require_once 'views/index.view.php';
-    require_once 'views/_partials/footer.view.php';
+    require_once 'views/partials/footer.view.php';
 }

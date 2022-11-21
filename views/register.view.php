@@ -1,6 +1,6 @@
 <?php
 
-require_once './views/_partials/header.view.php';
+require_once './views/partials/header.view.php';
 ?>
 
 <form id="form" action="register.php" method="post">
