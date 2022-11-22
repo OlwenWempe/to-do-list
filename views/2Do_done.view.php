@@ -1,5 +1,5 @@
 <?php
-require_once './views/_partials/auth_header.view.php';
+require_once './views/partials/auth_header.view.php';
 ?>
 <div class="">
     <?php if (!isset($tasks_done) || ($tasks_done == false)) : ?>

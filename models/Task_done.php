@@ -50,6 +50,21 @@ class Task_done
         $this->id_user = $id_user;
     }
 
+
+    public static function show_tasksDone(int $id_user)
+    {
+        $cnx = new Connexion();
+        $pdo = $cnx->getPdo();
+
+        $stmt = $pdo->prepare("SELECT * FROM task_done WHERE id_user = :id");
+        $stmt->bindParam(':id', $id_user);
+        $stmt->execute();
+        $tasks_done = $stmt->fetchAll();
+
+        return $tasks_done;
+    }
+
+
     public function insert()
     {
         $cnx = new Connexion();

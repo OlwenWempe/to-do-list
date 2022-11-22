@@ -1,32 +1,25 @@
 <?php
-session_start();
+require_once 'partials/_check_if_logged.php';
+require_once "models/Task_done.php";
+
 $title = 'Ma liste 2Do done';
 
-if (isset($_SESSION['authenticated']) && isset($_SESSION['id'])) {
-    require_once 'pdo.php';
-    $order_request = null;
 
-    if (isset($_GET['order']) && in_array($_GET['order'], ['asc', 'desc'])) {
-        $order_request = 'ORDER BY done_at ' . $_GET['order'];
-    }
-    try {
-        $sql_query = "
-        SELECT * 
-        FROM task_done 
-        WHERE id_user = :id 
-        " . $order_request;
+require_once 'partials/Connexion.php';
+$order_request = null;
 
-        $stmt = $pdo->prepare($sql_query);
-        $stmt->execute(['id' => $_SESSION['id']]);
-        $tasks_done = $stmt->fetchAll();
-    } catch (PDOException $th) {
-        $_SESSION['error'] = $th->getMessage();
-    }
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-        require_once 'delete_def.php';
-    }
-    unset($pdo);
-} else {
-    header('Location: destroy.php');
+if (isset($_GET['order']) && in_array($_GET['order'], ['asc', 'desc'])) {
+    $order_request = 'ORDER BY done_at ' . $_GET['order'];
 }
+try {
+    $id_user = $_SESSION['user']['id'];
+    $tasks_done = Task_done::show_tasksDone($id_user);
+} catch (PDOException $th) {
+    $_SESSION['error'] = $th->getMessage();
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
+    require_once 'delete_def.php';
+}
+unset($pdo);
+
 require_once 'views/2Do_done.view.php';

@@ -28,7 +28,7 @@ try {
                 $_SESSION['error'][] = $e->getMessage();
             }
             try {
-                $delete = Task_done::delete($task->id);
+                // $delete = Task_done::delete($task->id);
             } catch (PDOException $th) {
                 $_SESSION['error'][] = 'Désolé nous n\'avons pas pu mettre à jour votre 2Do.';
             }
