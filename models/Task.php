@@ -8,6 +8,7 @@ class Task
     private string $to_do_at;
     private int $is_done;
     private int $id_user;
+    private string $order_request;
 
 
     public function getId(): int
@@ -63,17 +64,47 @@ class Task
         $this->id_user = $id_user;
     }
 
+    public function getOrder_request(): int
+    {
+        return $this->order_request;
+    }
+
     public function insert()
     {
         $cnx = new Connexion();
         $pdo = $cnx->getPdo();
 
-        $stmt = $pdo->prepare("INSERT INTO user (`name`, first_name, email, password) VALUES (:last_name, :first_name, :email, :password)");
+        $stmt = $pdo->prepare("
+        INSERT INTO task (`name`, to_do_at, is_done, id_user) 
+        VALUES (:name, :to_do_at, :is_done, :id_user)");
         $stmt->execute([
-            'last_name' => $this->last_name,
-            'first_name' => $this->first_name,
-            'email' => $this->email,
-            'password' => $this->password
+            'name' => $this->name,
+            'to_do_at' => $this->to_do_at,
+            'is_done' => $this->is_done,
+            'id_user' => $this->id_user
         ]);
+    }
+
+    public static function show_tasks(int $id_user)
+    {
+        $cnx = new Connexion();
+        $pdo = $cnx->getPdo();
+
+        $stmt = $pdo->prepare("SELECT * FROM task WHERE id_user = :id");
+        $stmt->bindParam(':id', $id_user);
+        $stmt->execute();
+        $tasks = $stmt->fetchAll();
+
+        return $tasks;
+    }
+
+    public static function setDone(int $id)
+    {
+        $cnx = new Connexion();
+        $pdo = $cnx->getPdo();
+
+        $sql = "UPDATE task SET is_done = 1 WHERE id=:id";
+        $stmt3 = $pdo->prepare($sql);
+        $stmt3->execute(['id' => $id]);
     }
 }

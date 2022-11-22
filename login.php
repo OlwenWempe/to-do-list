@@ -31,6 +31,7 @@ if (isset($_SESSION['user'])) {
                     $_SESSION['errors'][] = "Oups, nous ne vous connaissons pas.";
                 } else {
                     $_SESSION['user'] = [
+                        'id' => $user->getId(),
                         'first_name' => $user->getFirst_name(),
                         'email' => $user->getEmail(),
                     ];
