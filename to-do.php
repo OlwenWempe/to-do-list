@@ -1,6 +1,7 @@
 <?php
 require_once 'partials/_check_if_logged.php';
 require_once "models/Task.php";
+require_once "models/Task_done.php";
 
 $title = 'Ma liste 2Do';
 
@@ -17,22 +18,17 @@ try {
     foreach ($tasks as $task) {
         if ($task->is_done == 1) {
             try {
-                $stmt = $pdo->prepare("INSERT INTO task_done (id_task, name, id_user, done_at) VALUES (:id_task, :name, :id_user, :done_at)");
-                $stmt->execute([
-                    'id_task' => $task->id,
-                    'name' => $task->name,
-                    'id_user' => $_SESSION['id'],
-                    'done_at' => date('Y/m/d H:i:s')
-                ]);
+                $task_done = new Task_done;
+                $task_done->setId_task($task->id);
+                $task_done->setName($task->name);
+                $task_done->setId_user($task->id_user);
             } catch (PDOException $th) {
                 $_SESSION['error'][] = $th->getMessage();
             } catch (Exception $e) {
                 $_SESSION['error'][] = $e->getMessage();
             }
             try {
-                $sql = "DELETE FROM task WHERE id = :id";
-                $stmt2 = $pdo->prepare($sql);
-                $stmt2->execute(['id' => $task->id]);
+                $delete = Task_done::delete($task->id);
             } catch (PDOException $th) {
                 $_SESSION['error'][] = 'Désolé nous n\'avons pas pu mettre à jour votre 2Do.';
             }
