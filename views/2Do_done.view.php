@@ -17,8 +17,6 @@ require_once './views/partials/auth_header.view.php';
     </div>
 
     <div class="">
-
-
         <table class="table-done mx-auto table table-striped">
             <thead>
                 <tr>
@@ -45,15 +43,12 @@ require_once './views/partials/auth_header.view.php';
                     <td colspan="2"><?= $task_done->name ?></td>
                     <td colspan="1"><?= $task_done->done_at ?></td>
                     <td>
-                        <a href=" delete_def.php?id=<?= $task_done->id ?>" class="btn btnMod">Supprimer
+                        <a href="2Do_done.php?id=<?= $task_done->id ?>" class="btn btnMod">Supprimer
                             définitivement</a>
                         <!-- <input type='submit' value='Supprimer définitivement' name="delete" class="btn btnMod"> -->
                     </td>
                 </tr>
-
                 <?php endforeach; ?>
-
-
             </tbody>
             <?php endif; ?>
     </div>

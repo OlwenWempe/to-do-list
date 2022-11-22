@@ -86,7 +86,7 @@ class Task_done
         $cnx = new Connexion();
         $pdo = $cnx->getPdo();
 
-        $sql = "DELETE FROM task WHERE id = :id";
+        $sql = "DELETE FROM task_done WHERE id = :id";
         $stmt2 = $pdo->prepare($sql);
         $stmt2->bindParam(':id', $id);
         $stmt2->execute();

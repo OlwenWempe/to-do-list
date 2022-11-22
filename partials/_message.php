@@ -19,5 +19,5 @@
 
 <?php endforeach ?>
 
-<?php $_SESSION['errors'] = [] ?>
+<?php $_SESSION['success'] = [] ?>
 <?php endif ?>

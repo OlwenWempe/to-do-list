@@ -27,10 +27,20 @@ try {
             } catch (Exception $e) {
                 $_SESSION['error'][] = $e->getMessage();
             }
-            try {
-                // $delete = Task_done::delete($task->id);
-            } catch (PDOException $th) {
-                $_SESSION['error'][] = 'Désolé nous n\'avons pas pu mettre à jour votre 2Do.';
+            if (empty($_SESSION['errors'])) {
+                try {
+                    $task_done->insert();
+                    $_SESSION['success'][] = "Votre 2Do a bien été marqué comme effectué";
+                } catch (Exception $e) {
+                    $_SESSION['errors'][] = $e->getMessage();
+                }
+            }
+            if (empty($_SESSION['errors'])) {
+                try {
+                    $delete = Task::delete($task->id);
+                } catch (PDOException $th) {
+                    $_SESSION['error'][] = 'Désolé nous n\'avons pas pu mettre à jour votre 2Do.';
+                }
             }
         }
     }
@@ -38,8 +48,13 @@ try {
     $_SESSION['error'][] = $th->getMessage();
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
-    $to_delete = 'task';
-    require_once 'delete.php';
+    if (isset($_POST['supp']) && !empty($_POST['supp'])) {
+        foreach ($_POST['supp'] as $id) {
+            $delete = Task::delete($id);
+        }
+    } else {
+        $delete = Task::delete($post->id);
+    }
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['done'])) {
     foreach ($_POST['supp'] as $id) {

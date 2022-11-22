@@ -107,4 +107,15 @@ class Task
         $stmt3 = $pdo->prepare($sql);
         $stmt3->execute(['id' => $id]);
     }
+
+    public static function delete(int $id)
+    {
+        $cnx = new Connexion();
+        $pdo = $cnx->getPdo();
+
+        $sql = "DELETE FROM task WHERE id = :id";
+        $stmt2 = $pdo->prepare($sql);
+        $stmt2->bindParam(':id', $id);
+        $stmt2->execute();
+    }
 }
