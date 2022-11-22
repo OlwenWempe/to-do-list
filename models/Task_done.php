@@ -19,8 +19,24 @@ class Task_done extends Task
     }
 
 
-    public function getDone_at(): string
+    public function setDone_at(string $done_at): void
     {
-        return $this->done_at;
+        $this->done_at = $done_at;
+    }
+
+    public function insert()
+    {
+        $cnx = new Connexion();
+        $pdo = $cnx->getPdo();
+
+        $stmt = $pdo->prepare("
+        INSERT INTO task_done (id_task, name, id_user, done_at) 
+        VALUES (:id_task, :name, :id_user, :done_at)");
+        $stmt->execute([
+            'id_task' => $this->id,
+            'name' => $this->name,
+            'id_user' => $this->id_user,
+            'done_at' => date('Y/m/d H:i:s')
+        ]);
     }
 }
