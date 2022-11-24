@@ -8,6 +8,7 @@ class Task_done
     private string $name;
     private string $done_at;
     private int $id_user;
+    private string $order_request;
 
     public function getId(): int
     {
@@ -51,6 +52,16 @@ class Task_done
     }
 
 
+    public function getOrder_request(): string
+    {
+        return $this->order_request;
+    }
+    public function setOrder_request(string $order_request): void
+    {
+        $this->order_request = $order_request;
+    }
+
+
     public static function show_tasksDone(int $id_user)
     {
         $cnx = new Connexion();
@@ -91,4 +102,15 @@ class Task_done
         $stmt2->bindParam(':id', $id);
         $stmt2->execute();
     }
+
+    /**
+     * Get the value of order_request
+     */
+
+
+    /**
+     * Set the value of order_request
+     *
+     * @return  self
+     */
 }
