@@ -1,5 +1,5 @@
 <?php
-require_once './views/_partials/auth_header.view.php';
+require_once './views/partials/auth_header.view.php';
 ?>
 
 <div class="card mx-auto mb-5" id="task-card">
@@ -41,5 +41,5 @@ require_once './views/_partials/auth_header.view.php';
 
 </div>
 <?php
-require_once './views/_partials/footer.view.php';
+require_once './views/partials/footer.view.php';
 ?>
