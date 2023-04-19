@@ -86,9 +86,9 @@ require_once './views/partials/auth_header.view.php';
         <li class="nav-item">
             <a class="nav-link color-light" href="#">politique de confidentialité</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link color-light" href="https://owempe.eu">@copyright Olwen WEMPE</a>
-        </li>
+        </li> -->
     </ul>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
